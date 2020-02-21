@@ -1,12 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './components/App'
+import { useLocalStore } from 'mobx-react';
+import { BrowserRouter as Router } from 'react-router-dom'
+import { dateFormat } from './utils/dateFormatter';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export const StoreContext = React.createContext();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const StoreProvider = ({ children }) => {
+    const store = useLocalStore(() => ({
+        reminders: [
+            {
+                title:"Buy Groceries",
+                dateCreated: new Date(),
+                expirationDate: dateFormat(new Date(),"date month time")
+            }
+        ],
+        addReminder: reminder => {
+            store.reminders.push(reminder);
+        },
+        get reminderCount() {
+            return store.reminders.length
+        },
+        editReminder : (id) => {
+            store.reminders[id].title = prompt("type to edit")
+        },
+    }));
+    return <StoreContext.Provider value={store}> {children} </StoreContext.Provider>
+}
+
+ReactDOM.render(
+    <Router>
+        <StoreProvider>
+            <App />
+        </StoreProvider>
+    </Router>
+    ,
+    document.querySelector("#root")
+);
