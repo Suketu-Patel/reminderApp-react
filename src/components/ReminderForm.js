@@ -1,15 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { StoreContext } from '../index'
 import DateTimePicker from 'react-datetime-picker';
+import {dateFormat} from "../utils/dateFormatter"
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
     const [reminder,setReminder] = useState("")
     const [date,setDate] = useState(new Date())
+
     const addReminder = e =>{
         e.preventDefault();
         store.addReminder(
-            {title:reminder,dateCreated:new Date(),expirationDate:date}
+            {title:reminder,dateCreated:new Date(),expirationDate:dateFormat(date,"date month time")}
         )
         setReminder("")
     }
@@ -31,6 +33,7 @@ const ReminderForm = () => {
             required
             placeholder="Press 'Enter' To add Reminder"
             />
+            <label className="mr-3">Reminder Time:</label>
             <DateTimePicker
                 onChange={changeDate}
                 value={date}
