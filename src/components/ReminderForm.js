@@ -23,15 +23,14 @@ const ReminderForm = () => {
     const changeDate = (newDate) => {
         setDate(newDate)
     }
-    
     return(
         <form onSubmit={addReminder}>
             <input type="text" 
-            value={reminder} 
-            className = "form-control mb-3 mt-2"
-            onChange={changeHandler}
-            required
-            placeholder="Press 'Enter' To add Reminder"
+                value={reminder} 
+                className = "form-control mb-3 mt-3"
+                onChange={changeHandler}
+                required
+                placeholder="Press 'Enter' To add Reminder"
             />
             <label className="mr-3">Reminder Time:</label>
             <DateTimePicker

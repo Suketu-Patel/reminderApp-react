@@ -16,6 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
@@ -33,5 +34,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://suketu-patel.github.io/reminderApp-serve"
+  "homepage": "https://suketu-patel.github.io/reminderApp"
 }
