@@ -15,7 +15,8 @@ const RemidnerList = () => {
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1">{reminder.title}</h5>
                             <small>{dateFormat(reminder.dateCreated,"day date")}</small>
-                            <small>Expiration-{reminder.expirationDate}</small>
+                            <small>Expiration-{dateFormat(reminder.expirationDate,"date month time")}</small>
+                            
                         </div>
                     </Link>
                 </div>

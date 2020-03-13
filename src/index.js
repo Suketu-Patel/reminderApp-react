@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 import { useLocalStore } from 'mobx-react';
 import { BrowserRouter as Router } from 'react-router-dom'
-import { dateFormat } from './utils/dateFormatter';
+import Axios from 'axios';
 
 export const StoreContext = React.createContext();
 Notification.requestPermission(function (status) {
@@ -24,7 +24,7 @@ if ('serviceWorker' in navigator) {
 const displayNotification = () => {
     if (Notification.permission === 'granted') {
         navigator.serviceWorker.getRegistration().then((reg) => {
-            
+            Axios.post("http://localhost:8000/",{data:"Sample Data"})
             reg.showNotification('Hello world!');
         });
     }
@@ -37,7 +37,7 @@ const StoreProvider = ({ children }) => {
             {
                 title: "Buy Groceries",
                 dateCreated: new Date(),
-                expirationDate: dateFormat(new Date(), "date month time")
+                expirationDate: new Date()
             }
         ],
         addReminder: reminder => {
