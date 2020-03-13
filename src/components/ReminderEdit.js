@@ -3,8 +3,9 @@ import { useParams, withRouter } from 'react-router-dom';
 import { StoreContext } from '..';
 import { useObserver } from 'mobx-react';
 import DateTimePicker from 'react-datetime-picker';
-import Axios from 'axios';
+// import Axios from 'axios';
 import { dateFormat } from '../utils/dateFormatter';
+import api from '../utils/api';
 
 const ReminderEdit = (props) => {
     let { reminderId } = useParams();
@@ -21,7 +22,7 @@ const ReminderEdit = (props) => {
 
     const deleteReminder = async () => {
         props.history.push("/")
-        await Axios.post('http://localhost:8000/destroyTask', 
+        await api.post('/destroyTask', 
         {
             title: store.reminders[reminderId].title,
             expirationDate:dateFormat(date,"minute hour date month day"),

@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { StoreContext } from '../index'
 import DateTimePicker from 'react-datetime-picker';
 import {dateFormat} from "../utils/dateFormatter"
-import Axios from 'axios';
+// import Axios from 'axios';
+import api from '../utils/api'
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
@@ -14,7 +15,7 @@ const ReminderForm = () => {
         store.addReminder(
             {title:reminder,dateCreated:new Date(),expirationDate:date}
         )
-        await Axios.post("http://localhost:8000/setTimer",
+        await api.post("/setTimer",
             { 
                 expirationDate:dateFormat(date,"minute hour date month day"),
                 title: reminder
