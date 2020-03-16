@@ -4,6 +4,8 @@ import DateTimePicker from 'react-datetime-picker';
 import {dateFormat} from "../utils/dateFormatter"
 // import Axios from 'axios';
 import api from '../utils/api'
+import { setPushServerSubscriptionId } from '../utils/pushNotificaiton';
+
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
@@ -15,10 +17,12 @@ const ReminderForm = () => {
         store.addReminder(
             {title:reminder,dateCreated:new Date(),expirationDate:date}
         )
+        console.log(setPushServerSubscriptionId())
         await api.post("/setTimer",
             { 
                 expirationDate:dateFormat(date,"minute hour date month day"),
-                title: reminder
+                title: reminder,
+                id: setPushServerSubscriptionId()
             }
         )
 

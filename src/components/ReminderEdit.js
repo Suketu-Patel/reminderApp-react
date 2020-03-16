@@ -3,7 +3,6 @@ import { useParams, withRouter } from 'react-router-dom';
 import { StoreContext } from '..';
 import { useObserver } from 'mobx-react';
 import DateTimePicker from 'react-datetime-picker';
-// import Axios from 'axios';
 import { dateFormat } from '../utils/dateFormatter';
 import api from '../utils/api';
 
@@ -22,11 +21,15 @@ const ReminderEdit = (props) => {
 
     const deleteReminder = async () => {
         props.history.push("/")
-        await api.post('/destroyTask', 
-        {
-            title: store.reminders[reminderId].title,
-            expirationDate:dateFormat(date,"minute hour date month day"),
-        })
+        try{
+            await api.post('/destroyTask', 
+                    {
+                        title: store.reminders[reminderId].title,
+                        expirationDate:dateFormat(date,"minute hour date month day"),
+                    })
+        }catch(err){
+            console.error("Communication failure with server")
+        }
         store.reminders.splice(reminderId, 1)
     }
 

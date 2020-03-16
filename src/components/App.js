@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReminderForm from './ReminderForm';
 import ReminderFooter from './ReminderFooter';
 import RemidnerList from './ReminderList';
 import { Switch, Route } from 'react-router-dom';
 import ReminderEdit from './ReminderEdit';
 import ReminderHeader from './ReminderHeader';
+import { StoreContext } from '..';
+
+
+import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
+import Loader from './Loader';
+
 
 const App = () => {
+
+    requestPermission();
+    registerServiceWorker();
+
+    const store = useContext(StoreContext);
+
     return (
-        <div style={{height:100+"%"}} >
+        <div style={{ height: 100 + "%" }} >
             <Switch>
                 <Route path="/" exact>
                     <ReminderHeader />
-                    <div className="h-100 container">
-                        <ReminderForm />
-                        <RemidnerList />
-                        <ReminderFooter />
-                    </div>
+                    {(!store.loading) ?
+                        <div>
+                            <div className="h-100 container">
+                                <ReminderForm />
+                                <RemidnerList />
+                                <button onClick={displayNotification} className="btn btn-primary">Show Notification</button>
+                            </div>
+                        </div>
+                        : 
+                        <Loader/>
+                    }
+                    <ReminderFooter />
 
                 </Route>
                 <Route path="/edit/:reminderId">

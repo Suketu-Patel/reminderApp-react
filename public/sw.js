@@ -1,13 +1,7 @@
 function receivePushNotification(event) {
   console.log("[Service Worker] Push Received.");
 
-  const { image, tag, url, title, text } = {
-    image:'https://images.unsplash.com/photo-1558980394-34764db076b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-    tag:"ahsdkjh",
-    url:"https://www.google.com",
-    title:"Hello world",
-    text:"Sample text"
-  }
+  const { title,text,image,tag,url } = event.data.json();
 
   const options = {
     data: url,
