@@ -17,7 +17,6 @@ const ReminderForm = () => {
         store.addReminder(
             {title:reminder,dateCreated:new Date(),expirationDate:date}
         )
-        console.log(setPushServerSubscriptionId())
         await api.post("/setTimer",
             { 
                 expirationDate:dateFormat(date,"minute hour date month day"),
