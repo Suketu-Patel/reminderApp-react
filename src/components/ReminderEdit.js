@@ -47,7 +47,7 @@ const ReminderEdit = (props) => {
                             <form onSubmit={(e) => {
                                 e.preventDefault();
                                 handleDateScheduling();
-                                return props.history.push("/")
+                                return props.history.push("/homepage")
                             }
                             }>
                                 <div className="form-group mt-3">

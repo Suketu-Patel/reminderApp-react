@@ -1,5 +1,42 @@
+html,body{
+    height: 100%;
+}
 .inputBtn {
     border-radius: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
     border:none
+}
+
+.groupBtn {
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+.taskNumber {
+    margin-left: 60%;
+    background-color: tan;
+    padding: 0 5px 0 5px;
+    border-radius: 10px;
+    font-size: small;
+}
+.stickyImage {
+    position: absolute;
+    transform: rotate(-20deg);
+    left: -20px;
+    top: 60px;
+    z-index: -1;
+    height: 300px;
+}
+.addReminder {
+    position: absolute;
+    overflow: hidden;
+    top: 200px;
+    left:0;
+    right:0;
+    margin: auto;
+    background: none;
+    border:0;
+    font-size: 3rem;
+    color: #007bff;
 }

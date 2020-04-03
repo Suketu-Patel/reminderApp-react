@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReminderForm from './ReminderForm';
 import ReminderFooter from './ReminderFooter';
 import RemidnerList from './ReminderList';
@@ -7,12 +7,13 @@ import ReminderEdit from './ReminderEdit';
 import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
 import Login from './Login'
-import { StoreContext } from '..';
+// import { StoreContext } from '..';
 import HomePage from "./HomePage"
 
-
+// eslint-disable-next-line
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
-import Loader from './Loader';
+import LandingPage from './LandingPage';
+// import Loader from './Loader';
 
 
 const App = () => {
@@ -20,14 +21,22 @@ const App = () => {
     requestPermission();
     registerServiceWorker();
 
-    const store = useContext(StoreContext);
+    // const store = useContext(StoreContext);
 
     return (
-        <div style={{ height: 100 + "%" }} >
+        <div style={{ height: 100 + "%"}} >
             <Switch>
-                <Route path="/" exact>
+            <Route path="/" exact>
+                <LandingPage/>
+            </Route>
+                <Route path="/addReminder">
                     <ReminderHeader />
-                    {(!store.loading) ?
+                    <div className="h-100 container">
+                        <ReminderForm />
+                        {/* <RemidnerList /> */}
+                    </div>
+                    
+                    {/* {(!store.loading) ?
                         <div>
                             <div className="h-100 container">
                                 <ReminderForm />
@@ -37,7 +46,7 @@ const App = () => {
                         </div>
                         : 
                         <Loader/>
-                    }
+                    } */}
                     <ReminderFooter />
 
                 </Route>
@@ -52,10 +61,11 @@ const App = () => {
                     <ReminderHeader/>
                     <Login/>
                 </Route>
+                <Route path="/tasks">
+                    <RemidnerList/>
+                </Route>
                 <Route path="/edit/:reminderId">
-                    <ReminderHeader />
                     <ReminderEdit />
-                    <ReminderFooter />
                 </Route>
             </Switch>
 

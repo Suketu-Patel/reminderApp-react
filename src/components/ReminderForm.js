@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
+import {Link} from "react-router-dom"
 import { StoreContext } from '../index'
 import DateTimePicker from 'react-datetime-picker';
 import {dateFormat} from "../utils/dateFormatter"
 // import Axios from 'axios';
 import api from '../utils/api'
 import { setPushServerSubscriptionId } from '../utils/pushNotificaiton';
-
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
@@ -36,7 +36,8 @@ const ReminderForm = () => {
         setDate(newDate)
     }
     return(
-        <form onSubmit={addReminder}>
+        <div>
+            <form onSubmit={addReminder}>
             <input type="text" 
                 value={reminder} 
                 className = "form-control mb-3 mt-3"
@@ -55,6 +56,10 @@ const ReminderForm = () => {
                 type="submit"
             />
         </form>
+        <Link to="/homepage"
+            className="mt-3 mb-5 btn btn-primary form-control"
+        >Done</Link>
+        </div>
     )
 }
 export default ReminderForm;
