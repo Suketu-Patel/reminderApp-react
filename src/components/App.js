@@ -30,7 +30,7 @@ const App = () => {
                 <LandingPage/>
             </Route>
                 <Route path="/addReminder">
-                    <ReminderHeader />
+                    
                     <div className="h-100 container">
                         <ReminderForm />
                         {/* <RemidnerList /> */}
