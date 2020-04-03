@@ -39,7 +39,8 @@ const App = () => {
                     <ReminderFooter />
 
                 </Route>
-                <Route path="/signup" exact>
+                <Route path="/signup">
+                    <ReminderHeader/>
                     <Signup/>
                 </Route>
                 <Route path="/edit/:reminderId">
