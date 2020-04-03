@@ -1,6 +1,6 @@
-html,body{
+/* html,body{
     height: 100%;
-}
+} */
 .inputBtn {
     border-radius: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
@@ -39,4 +39,129 @@ html,body{
     border:0;
     font-size: 3rem;
     color: #007bff;
+}
+
+/* TOGGLE SWITCH CSS */
+
+#switch{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+#switchLabel {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 25px;
+	background: grey;
+	display: inline-block;
+	border-radius: 25px;
+	position: relative;
+}
+
+#switchLabel:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 15px;
+	transition: 0.3s;
+}
+
+#switch:checked + #switchLabel {
+	background: #da5555;
+}
+
+#switch:checked + #switchLabel:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+#switchLabel:active:after {
+	width: 20px;
+}
+
+#switch2{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+#switchLabel {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 50px;
+	height: 25px;
+	background: grey;
+	display: inline-block;
+	border-radius: 25px;
+	position: relative;
+}
+
+#switchLabel:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 15px;
+	transition: 0.3s;
+}
+
+#switch2:checked + #switchLabel {
+	background: #da5555;
+}
+
+#switch2:checked + #switchLabel:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+#switchLabel:active:after {
+	width: 20px;
+}
+
+/* Map css */
+
+.my_app {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+}
+.card {
+    z-index: 1
+}
+.searchBar {
+    position: relative;
+    
+    z-index: 1;
+}
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+}
+.setcoordbtn {
+    position: relative;
+    z-index:1;
+}
+.mainWrapper {
+    z-index:1;
+    height: 100vh;
 }

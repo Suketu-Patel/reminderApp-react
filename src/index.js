@@ -8,6 +8,7 @@ export const StoreContext = React.createContext();
 
 const StoreProvider = ({ children }) => {
     const store = useLocalStore(() => ({
+        reminder:"",
         reminders: [
             {
                 title: "Buy Groceries",
@@ -25,6 +26,17 @@ const StoreProvider = ({ children }) => {
         editReminder: (id) => {
             store.reminders[id].title = prompt("type to edit")
         },
+        date: new Date(),
+        locationToggle: false,
+        timeToggle: false,
+        searchText: "",
+        mapState: {
+            lng: 73.18130097069718,
+            lat: 22.326737087756456,
+            zoom: 12
+        },
+        suggestions:false,
+        locationName: ""
     }));
     return <StoreContext.Provider value={store}> {children} </StoreContext.Provider>
 }

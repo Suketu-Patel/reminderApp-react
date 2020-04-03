@@ -13,6 +13,7 @@ import HomePage from "./HomePage"
 // eslint-disable-next-line
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
 import LandingPage from './LandingPage';
+import LocationBased from './LocationBased';
 // import Loader from './Loader';
 
 
@@ -24,18 +25,18 @@ const App = () => {
     // const store = useContext(StoreContext);
 
     return (
-        <div style={{ height: 100 + "%"}} >
+        <div style={{ height: 100 + "%" }} >
             <Switch>
-            <Route path="/" exact>
-                <LandingPage/>
-            </Route>
+                <Route path="/" exact>
+                    <LandingPage />
+                </Route>
                 <Route path="/addReminder">
-                    
+
                     <div className="h-100 container">
                         <ReminderForm />
                         {/* <RemidnerList /> */}
                     </div>
-                    
+
                     {/* {(!store.loading) ?
                         <div>
                             <div className="h-100 container">
@@ -51,22 +52,25 @@ const App = () => {
 
                 </Route>
                 <Route path="/homepage">
-                    <HomePage/>
+                    <HomePage />
                 </Route>
                 <Route path="/signup">
-                    <ReminderHeader/>
-                    <Signup/>
+                    <ReminderHeader />
+                    <Signup />
                 </Route>
                 <Route path="/login">
-                    <ReminderHeader/>
-                    <Login/>
+                    <ReminderHeader />
+                    <Login />
                 </Route>
                 <Route path="/tasks">
-                    <RemidnerList/>
-                    <ReminderFooter/>
+                    <RemidnerList />
+                    <ReminderFooter />
                 </Route>
                 <Route path="/edit/:reminderId">
                     <ReminderEdit />
+                </Route>
+                <Route path="/setlocation">
+                    <LocationBased/>
                 </Route>
             </Switch>
 

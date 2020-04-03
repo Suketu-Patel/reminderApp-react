@@ -10,7 +10,7 @@ const LandingPage = () =>{
                 <h1 style={{textDecoration:"underline"}}>Welcome to, NotifyMe!</h1>
            </div>
            <div style={{position:"relative"}}>
-               <img className="stickyImage" src="https://img.freepik.com/free-vector/collection-of-sticky-note-illustrations_53876-8291.jpg"></img>
+               <img className="stickyImage" src="https://img.freepik.com/free-vector/collection-of-sticky-note-illustrations_53876-8291.jpg" alt="stickynotes"></img>
            </div>
         </div>
     )
