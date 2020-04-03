@@ -5,6 +5,7 @@ import RemidnerList from './ReminderList';
 import { Switch, Route } from 'react-router-dom';
 import ReminderEdit from './ReminderEdit';
 import ReminderHeader from './ReminderHeader';
+import Signup from './Signup'
 import { StoreContext } from '..';
 
 
@@ -37,6 +38,9 @@ const App = () => {
                     }
                     <ReminderFooter />
 
+                </Route>
+                <Route path="/signup" exact>
+                    <Signup/>
                 </Route>
                 <Route path="/edit/:reminderId">
                     <ReminderHeader />
