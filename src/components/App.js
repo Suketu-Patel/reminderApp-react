@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import ReminderEdit from './ReminderEdit';
 import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
+import Login from './Login'
 import { StoreContext } from '..';
 
 
@@ -42,6 +43,10 @@ const App = () => {
                 <Route path="/signup">
                     <ReminderHeader/>
                     <Signup/>
+                </Route>
+                <Route path="/login">
+                    <ReminderHeader/>
+                    <Login/>
                 </Route>
                 <Route path="/edit/:reminderId">
                     <ReminderHeader />
