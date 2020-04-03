@@ -63,6 +63,7 @@ const App = () => {
                 </Route>
                 <Route path="/tasks">
                     <RemidnerList/>
+                    <ReminderFooter/>
                 </Route>
                 <Route path="/edit/:reminderId">
                     <ReminderEdit />
