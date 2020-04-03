@@ -8,6 +8,7 @@ import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
 import Login from './Login'
 import { StoreContext } from '..';
+import HomePage from "./HomePage"
 
 
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
@@ -39,6 +40,9 @@ const App = () => {
                     }
                     <ReminderFooter />
 
+                </Route>
+                <Route path="/homepage">
+                    <HomePage/>
                 </Route>
                 <Route path="/signup">
                     <ReminderHeader/>
