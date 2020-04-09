@@ -34,7 +34,7 @@ const createSubscription = async (reg) => {
         userVisibleOnly:true,
         applicationServerKey: pushServerPublicKey
     }).then((sub)=>{
-        console.log('Endpoint URL: ',sub);
+        // console.log('Endpoint URL: ',sub);
         api.post("/subscription",sub).then((response)=>{
             sub_id = response.data.id;
         })
@@ -53,7 +53,7 @@ const checkSubscription = (reg)=>{
         if(sub==null) {
             console.log("Not subscribed to push service");
         }else{
-            console.log('Subscription object: ',sub);
+            // console.log('Subscription object: ',sub);
         }
     });
 }

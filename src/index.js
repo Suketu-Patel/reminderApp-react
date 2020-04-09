@@ -5,9 +5,11 @@ import { useLocalStore } from 'mobx-react';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 export const StoreContext = React.createContext();
-
 const StoreProvider = ({ children }) => {
+    
+
     const store = useLocalStore(() => ({
+        user: null,
         reminder:"",
         reminders: [
             {

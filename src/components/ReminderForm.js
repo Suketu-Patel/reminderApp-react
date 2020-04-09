@@ -7,20 +7,31 @@ import api from '../utils/api'
 import { setPushServerSubscriptionId } from '../utils/pushNotificaiton';
 import TimeBased from './TimeBased';
 import { useObserver } from 'mobx-react';
+import fire from '../config/fire';
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
-
+    store.user = localStorage.getItem("user")
+    const uid = JSON.parse(store.user).uid
     const addReminder = async e => {
         e.preventDefault();
+        const datenow = new Date();
+        const id =setPushServerSubscriptionId()
+        console.log(id)
         store.addReminder(
-            { title: store.reminder, dateCreated: new Date(), expirationDate: store.date }
+            { title: store.reminder, dateCreated: datenow.toString(), expirationDate: store.date.toString() }
         )
+        fire.firestore().collection("users").doc(uid).collection("reminders").add({
+                dateCreated: datenow,
+                expirationDate: store.date,
+                title: store.reminder,
+                id
+        }).catch(error=>console.log(error))
         await api.post("/setTimer",
             {
                 expirationDate: dateFormat(store.date, "minute hour date month day"),
                 title: store.reminder,
-                id: setPushServerSubscriptionId()
+                id
             }
         )
 

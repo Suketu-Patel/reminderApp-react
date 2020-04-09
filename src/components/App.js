@@ -1,77 +1,85 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReminderForm from './ReminderForm';
 import ReminderFooter from './ReminderFooter';
 import RemidnerList from './ReminderList';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import ReminderEdit from './ReminderEdit';
 import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
 import Login from './Login'
-// import { StoreContext } from '..';
 import HomePage from "./HomePage"
 
 // eslint-disable-next-line
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
 import LandingPage from './LandingPage';
 import LocationBased from './LocationBased';
-// import Loader from './Loader';
+import fire from '../config/fire';
+import { StoreContext } from '..';
+import ProtectedRoute from './ProtectedRoute';
 
 
 const App = () => {
+    const store = useContext(StoreContext);
 
     requestPermission();
     registerServiceWorker();
-
-    // const store = useContext(StoreContext);
+    useEffect(()=>{
+        fire.auth().onAuthStateChanged((user)=>{
+            if(user){
+                store.user = user;
+            } else {
+                store.user = null;
+            }
+        });
+    })
 
     return (
         <div style={{ height: 100 + "%" }} >
             <Switch>
+
                 <Route path="/" exact>
                     <LandingPage />
                 </Route>
-                <Route path="/addReminder">
 
-                    <div className="h-100 container">
-                        <ReminderForm />
-                        {/* <RemidnerList /> */}
-                    </div>
-
-                    {/* {(!store.loading) ?
-                        <div>
-                            <div className="h-100 container">
-                                <ReminderForm />
-                                <RemidnerList />
-                                <button onClick={displayNotification} className="btn btn-primary">Show Notification</button>
-                            </div>
-                        </div>
-                        : 
-                        <Loader/>
-                    } */}
-                    <ReminderFooter />
-
-                </Route>
-                <Route path="/homepage">
-                    <HomePage />
-                </Route>
                 <Route path="/signup">
                     <ReminderHeader />
                     <Signup />
                 </Route>
+
                 <Route path="/login">
                     <ReminderHeader />
                     <Login />
                 </Route>
-                <Route path="/tasks">
+
+                <ProtectedRoute path="/homepage">
+                    <HomePage />
+                </ProtectedRoute>
+                
+                <ProtectedRoute path="/addReminder">
+                    <div className="h-100 container">
+                        <ReminderForm />
+                    </div>
+                    <ReminderFooter />
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/tasks">
                     <RemidnerList />
                     <ReminderFooter />
-                </Route>
-                <Route path="/edit/:reminderId">
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/edit/:reminderId">
                     <ReminderEdit />
-                </Route>
-                <Route path="/setlocation">
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/setlocation">
                     <LocationBased/>
-                </Route>
+                </ProtectedRoute>
+
+                <ProtectedRoute path="*">
+                    <h1>404 PAGE NOT FOUND</h1>
+                    <Link to="/homepage">go home</Link>
+                </ProtectedRoute>
+
             </Switch>
 
         </div>

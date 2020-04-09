@@ -6,9 +6,12 @@ import { reaction } from "mobx"
 import { withRouter } from "react-router-dom"
 
 const MapBody = (props) => {
-
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
     const store = useContext(StoreContext);
+    navigator.geolocation.getCurrentPosition((data)=>{
+        store.mapState.lat =data.coords.latitude
+        store.mapState.lng = data.coords.longitude
+    }, (error)=>{console.log(error)});
     let my_app;
     useEffect(() => {
 
