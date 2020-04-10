@@ -75,10 +75,10 @@ const App = () => {
                     <LocationBased/>
                 </ProtectedRoute>
 
-                <ProtectedRoute path="*">
+                <Route path="*">
                     <h1>404 PAGE NOT FOUND</h1>
                     <Link to="/homepage">go home</Link>
-                </ProtectedRoute>
+                </Route>
 
             </Switch>
 
