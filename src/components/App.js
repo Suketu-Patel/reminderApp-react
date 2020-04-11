@@ -8,6 +8,7 @@ import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
 import Login from './Login'
 import HomePage from "./HomePage"
+import Group from "./Group"
 
 // eslint-disable-next-line
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
@@ -36,7 +37,6 @@ const App = () => {
     return (
         <div style={{ height: 100 + "%" }} >
             <Switch>
-
                 <Route path="/" exact>
                     <LandingPage />
                 </Route>
@@ -69,6 +69,10 @@ const App = () => {
 
                 <ProtectedRoute path="/edit/:reminderId">
                     <ReminderEdit />
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/group/:groupId">
+                    <Group />
                 </ProtectedRoute>
 
                 <ProtectedRoute path="/setlocation">

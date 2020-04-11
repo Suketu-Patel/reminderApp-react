@@ -5,11 +5,6 @@ import Groups from "./Groups"
 import {Link} from "react-router-dom"
 import fire from "../config/fire"
 const HomePage=()=>{
-    // fire.firestore().collection("users").get().then((querySnapshot)=>{
-    //     querySnapshot.forEach((docs)=>{
-    //         console.log(docs.id,docs.data())
-    //     })
-    // })
     return(
         <div className="container pt-5">
             <TaskList/>

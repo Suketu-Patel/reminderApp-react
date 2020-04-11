@@ -12,7 +12,14 @@
     border: 0;
     border-radius: 0;
     cursor: pointer;
+    transition: 0.3s;
 }
+
+.groupBtn:hover {
+    background-color: rgb(216, 216, 216);
+    transition: 0.3s;
+}
+
 .taskNumber {
     margin-left: 60%;
     background-color: tan;

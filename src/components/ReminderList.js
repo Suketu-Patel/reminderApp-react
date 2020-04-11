@@ -3,6 +3,7 @@ import { StoreContext } from '..';
 import { useObserver } from 'mobx-react'
 import { Link,NavLink } from 'react-router-dom';
 import { dateFormat } from "../utils/dateFormatter"
+import Loader from "./Loader"
 import fire from "../config/fire"
 const RemidnerList = () => {
     const store = useContext(StoreContext)
@@ -11,6 +12,7 @@ const RemidnerList = () => {
     let reminderArray = []
 
     useEffect(() => {
+        store.loading = true;
         fire.firestore().collection("users").doc(user.uid).collection("reminders").get().then((querySnapshot) => {
             querySnapshot.forEach((docs) => {
                 let reminder = docs.data();
@@ -19,7 +21,8 @@ const RemidnerList = () => {
             })
         }).then(() => {
             if (reminderArray.length > 0) {
-                store.reminders = [...store.reminders, ...reminderArray]
+                store.reminders = [...reminderArray]
+                store.loading = false;
             }
         }).catch(error => console.log(error))
         //eslint-disable-next-line
@@ -28,7 +31,6 @@ const RemidnerList = () => {
 
     const reminderList = useObserver(() =>
         store.reminders.map((reminder, id) => {
-            console.log(reminder.title, reminder.dateCreated, reminder.expirationDate)
             return (
                 <div key={id} className="list-group">
                     <Link to={`/edit/${id}`}
@@ -52,7 +54,17 @@ const RemidnerList = () => {
                     <h4 className="navbar-item navbar-center" style={{color:"white"}}>Tasks</h4>
                 </div>
             </nav>
-            {reminderList}
+            {/* {reminderList} */}
+            {
+                useObserver(()=>{
+                    return (
+                        (store.loading)?
+                             <Loader/>:
+                         reminderList
+                    )
+                })
+                
+            }
         </div>
     )
 }

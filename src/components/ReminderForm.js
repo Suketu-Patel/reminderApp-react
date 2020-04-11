@@ -17,7 +17,6 @@ const ReminderForm = () => {
         e.preventDefault();
         const datenow = new Date();
         const id =setPushServerSubscriptionId()
-        console.log(id)
         store.addReminder(
             { title: store.reminder, dateCreated: datenow.toString(), expirationDate: store.date.toString() }
         )
