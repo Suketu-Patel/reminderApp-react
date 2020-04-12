@@ -172,3 +172,19 @@
     z-index:1;
     height: 100vh;
 }
+
+.loginSignupWindow{
+    padding: 20px 0 20px 0;
+    margin-top:100px;
+    width: 80%;
+    height: fit-content;
+    border-radius: 20px;
+    background: white;
+    box-shadow:1px 1px 5px rgba(0, 0, 0, 0.26);
+}
+
+.loginSignupWindowWrapper {
+    height: 100vh;
+    overflow: hidden;
+    background: url("https://media1.thehungryjpeg.com/thumbs2/ori_3648609_ht7kdk2gcz7u7h5ot282yt5ljub6ebgcw1d3ck61_shining-stars-seamless-repeating-pattern-colorful-stars-background.jpg");
+}

@@ -10,8 +10,8 @@ const Signup = (props) => {
     }
 
     return (
-        <div style={{ height:"100vh",overflow:'hidden'}}>
-            <div className="container" style={{marginTop:100}}>
+        <div className="loginSignupWindowWrapper">
+            <div className="container loginSignupWindow">
             <form style={{width:"70%", margin:'0 auto'}} onSubmit={(e)=>{
                 e.preventDefault();
                 fire.auth().createUserWithEmailAndPassword(userCreds.email,userCreds.password).then((authUser)=>{
