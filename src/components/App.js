@@ -8,7 +8,7 @@ import ReminderHeader from './ReminderHeader';
 import Signup from './Signup'
 import Login from './Login'
 import HomePage from "./HomePage"
-import Group from "./Group"
+import Group from "./Group/Group"
 
 // eslint-disable-next-line
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
@@ -17,7 +17,7 @@ import LocationBased from './LocationBased';
 import fire from '../config/fire';
 import { StoreContext } from '..';
 import ProtectedRoute from './ProtectedRoute';
-
+import HomePageHeader from './HomePageHeader';
 
 const App = () => {
     const store = useContext(StoreContext);
@@ -52,6 +52,7 @@ const App = () => {
                 </Route>
 
                 <ProtectedRoute path="/homepage">
+                    <HomePageHeader/>
                     <HomePage />
                 </ProtectedRoute>
                 

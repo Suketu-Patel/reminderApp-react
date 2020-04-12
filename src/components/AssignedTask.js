@@ -3,7 +3,7 @@ import React from "react"
 const AssignedTask = ()=>{
     return(
         <div>
-            <button className="mt-2 btn btn-warning form-control">Assigned Tasks</button>
+            <button className="btn btn-warning form-control" style={{height:"100px",lineHeight:"90px"}}>Assigned Tasks</button>
         </div>
     )
 }

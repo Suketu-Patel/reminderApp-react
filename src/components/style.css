@@ -38,7 +38,7 @@
 .addReminder {
     position: absolute;
     overflow: hidden;
-    top: 200px;
+    top: 160px;
     left:0;
     right:0;
     margin: auto;
@@ -46,6 +46,20 @@
     border:0;
     font-size: 3rem;
     color: #007bff;
+    width: fit-content;
+}
+
+.addGroup {
+    position: absolute;
+    overflow: hidden;
+    top: 140px;
+    left:0;
+    right:0;
+    margin: auto;
+    background: none;
+    border:0;
+    color: #007bff;
+    width: fit-content;
 }
 
 /* TOGGLE SWITCH CSS */
