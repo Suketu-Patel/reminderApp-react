@@ -6,12 +6,12 @@ import { Link } from "react-router-dom"
 const HomePage = () => {
     return (
         <div className="container pt-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
                         <TaskList />
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <AssignedTask />
                     </div>
                 </div>
@@ -24,14 +24,14 @@ const HomePage = () => {
             <div style={{ position: "relative" }}>
                 <Link className="addReminder" to="/addReminder">
                     <button className="btn btn-primary" style={{ width: "300px" }}>
-                        <i class="fas fa-sticky-note"></i> Add Reminder
+                        <i className="fas fa-sticky-note"></i> Add Reminder
                     </button>
                 </Link>
             </div>
             <div style={{ position: "relative" }}>
-                <Link className="addGroup" to="/homepage">
+                <Link className="addGroup" to="/addGroup">
                     <button className="btn btn-info" style={{ width: "300px" }}>
-                        <i className="fas fa-users"></i> Add Group
+                        <i className="fas fa-users"></i> New Group
                     </button>
                 </Link>
             </div>

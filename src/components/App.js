@@ -18,6 +18,8 @@ import fire from '../config/fire';
 import { StoreContext } from '..';
 import ProtectedRoute from './ProtectedRoute';
 import HomePageHeader from './HomePageHeader';
+import AssignedTaskList from './AssignedTaskList';
+import GroupForm from './Group/GroupForm';
 
 const App = () => {
     const store = useContext(StoreContext);
@@ -63,9 +65,17 @@ const App = () => {
                     <ReminderFooter />
                 </ProtectedRoute>
 
+                <ProtectedRoute path="/addGroup">
+                    <GroupForm/>
+                </ProtectedRoute>
+
                 <ProtectedRoute path="/tasks">
                     <RemidnerList />
                     <ReminderFooter />
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/assignedtask">
+                    <AssignedTaskList/>
                 </ProtectedRoute>
 
                 <ProtectedRoute path="/edit/:reminderId">

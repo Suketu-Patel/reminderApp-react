@@ -38,7 +38,8 @@ const StoreProvider = ({ children }) => {
             zoom: 12
         },
         suggestions:false,
-        locationName: ""
+        locationName: "",
+        groups:[]
     }));
     return <StoreContext.Provider value={store}> {children} </StoreContext.Provider>
 }
