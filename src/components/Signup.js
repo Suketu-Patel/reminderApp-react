@@ -1,6 +1,6 @@
 import React,{useState} from "react"
 import './style.css'
-import fire from "../config/fire";
+import {fire,db} from "../config/fire";
 import { withRouter } from "react-router-dom";
 const Signup = (props) => {
 
@@ -15,7 +15,7 @@ const Signup = (props) => {
             <form style={{width:"70%", margin:'0 auto'}} onSubmit={(e)=>{
                 e.preventDefault();
                 fire.auth().createUserWithEmailAndPassword(userCreds.email,userCreds.password).then((authUser)=>{
-                    fire.firestore().collection("users").doc(authUser.user.uid).set({
+                    db.collection("users").doc(authUser.user.uid).set({
                         emailid: userCreds.email,
                         uid: authUser.user.uid,
                         username: userCreds.name

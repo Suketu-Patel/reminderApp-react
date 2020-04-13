@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import fire from "../../config/fire";
+import {db} from "../../config/fire";
 import { withRouter } from "react-router-dom";
 
 const GroupForm = (props) => {
@@ -11,7 +11,7 @@ const GroupForm = (props) => {
     const searchDatabaseAndAddMember = () => {
         console.log("hmm")
         setbuttonStatus(true)
-        fire.firestore().collection("users").where("emailid", "==", email).get().then((querySnapshot) => {
+        db.collection("users").where("emailid", "==", email).get().then((querySnapshot) => {
             if(querySnapshot.empty){
                 setbuttonStatus(false)
                 return;
@@ -37,12 +37,12 @@ const GroupForm = (props) => {
         <div className="container mt-3 p-5">
             <form onSubmit={(e)=>{
                 e.preventDefault()
-                fire.firestore().collection("groups").add({
+                db.collection("groups").add({
                     "title": title,
                     "members":members
                 }).then((doc)=>{
                     members.forEach(member=>{
-                        fire.firestore().collection("users").doc(member.id).collection("groups").add({
+                        db.collection("users").doc(member.id).collection("groups").add({
                         "gid":doc.id
                     })
                     })

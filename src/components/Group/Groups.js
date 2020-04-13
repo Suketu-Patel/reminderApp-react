@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { StoreContext } from "../..";
 import { Link } from "react-router-dom"
-import fire from "../../config/fire";
+import {db} from "../../config/fire";
 import { useObserver } from "mobx-react";
 
 
@@ -11,12 +11,12 @@ const Groups = () => {
     let id = JSON.parse(localStorage.getItem("user")).uid
 
     useEffect(() => {
-        fire.firestore().collection("users").doc(id).collection("groups").get().then((qsn) => {
+        db.collection("users").doc(id).collection("groups").get().then((qsn) => {
             if (qsn.empty) {
                 return;
             }
             qsn.forEach((doc) => {
-                fire.firestore().collection("groups").doc(doc.data().gid).get().then((qsn) => {
+                db.collection("groups").doc(doc.data().gid).get().then((qsn) => {
                     if (qsn.empty) {
                         return;
                     }

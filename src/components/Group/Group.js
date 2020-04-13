@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { useParams,NavLink, Link } from "react-router-dom"
-import fire from "../../config/fire";
+import {db} from "../../config/fire";
 
 const Group = ()=>{
     const {groupId} = useParams();
     let [groupdata,setgroupdata]=useState({});
-    fire.firestore().collection("groups").doc(groupId).get().then((qss)=>{
+    db.collection("groups").doc(groupId).get().then((qss)=>{
         setgroupdata(qss.data())
     })
     return(
@@ -18,11 +18,7 @@ const Group = ()=>{
             </nav>
 
             <div className="container" style={{height:"500px",overflowX:"hidden",overflowY:"scroll"}}>
-                <div>c</div>
-                <div>c</div>
-                <div>c</div>
-                <div>c</div>
-                <div>c</div>
+                
             </div>
 
             <div style={{ position: "relative" }}>

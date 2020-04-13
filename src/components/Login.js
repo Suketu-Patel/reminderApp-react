@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './style.css'
 import { withRouter } from 'react-router-dom';
-import fire from "../config/fire";
+import {fire} from "../config/fire";
 
 const Login = (props) => {
     const [userCreds,setUserCreds] = useState({username:'',password:''});

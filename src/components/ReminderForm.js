@@ -7,7 +7,7 @@ import api from '../utils/api'
 import { setPushServerSubscriptionId } from '../utils/pushNotificaiton';
 import TimeBased from './TimeBased';
 import { useObserver } from 'mobx-react';
-import fire from '../config/fire';
+import {db} from '../config/fire';
 
 const ReminderForm = () => {
     const store = useContext(StoreContext);
@@ -20,7 +20,7 @@ const ReminderForm = () => {
         store.addReminder(
             { title: store.reminder, dateCreated: datenow.toString(), expirationDate: store.date.toString() }
         )
-        fire.firestore().collection("users").doc(uid).collection("reminders").add({
+       db.collection("users").doc(uid).collection("reminders").add({
                 dateCreated: datenow,
                 expirationDate: store.date,
                 title: store.reminder,

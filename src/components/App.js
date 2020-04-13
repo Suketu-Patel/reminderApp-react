@@ -14,7 +14,7 @@ import Group from "./Group/Group"
 import { requestPermission, registerServiceWorker, displayNotification } from "../utils/pushNotificaiton"
 import LandingPage from './LandingPage';
 import LocationBased from './LocationBased';
-import fire from '../config/fire';
+import {fire} from '../config/fire';
 import { StoreContext } from '..';
 import ProtectedRoute from './ProtectedRoute';
 import HomePageHeader from './HomePageHeader';

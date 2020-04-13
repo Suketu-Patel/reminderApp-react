@@ -4,7 +4,7 @@ import { useObserver } from 'mobx-react'
 import { Link,NavLink } from 'react-router-dom';
 import { dateFormat } from "../utils/dateFormatter"
 import Loader from "./Loader"
-import fire from "../config/fire"
+import {db} from "../config/fire"
 const RemidnerList = () => {
     const store = useContext(StoreContext)
     store.user = localStorage.getItem("user")
@@ -13,7 +13,7 @@ const RemidnerList = () => {
 
     useEffect(() => {
         store.loading = true;
-        fire.firestore().collection("users").doc(user.uid).collection("reminders").get().then((querySnapshot) => {
+        db.collection("users").doc(user.uid).collection("reminders").get().then((querySnapshot) => {
             querySnapshot.forEach((docs) => {
                 let reminder = docs.data();
                 console.log(reminder)
