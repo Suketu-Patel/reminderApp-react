@@ -20,6 +20,7 @@ import ProtectedRoute from './ProtectedRoute';
 import HomePageHeader from './HomePageHeader';
 import AssignedTaskList from './AssignedTaskList';
 import GroupForm from './Group/GroupForm';
+import ClaimandReject from './Group/ClaimandReject';
 
 const App = () => {
     const store = useContext(StoreContext);
@@ -88,6 +89,10 @@ const App = () => {
 
                 <ProtectedRoute path="/setlocation">
                     <LocationBased/>
+                </ProtectedRoute>
+
+                <ProtectedRoute path="/claimreject">
+                    <ClaimandReject/>
                 </ProtectedRoute>
 
                 <Route path="*">
