@@ -22,6 +22,7 @@ const Groups = () => {
                     }
                     let data = qsn.data()
                     data.groupId = qsn.id;
+                    //eslint-disable-next-line
                     groupList = [...groupList, data]
                     store.groups = groupList;
                 })
