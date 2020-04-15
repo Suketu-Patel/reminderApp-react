@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: `https://suketu-5ba44612.localhost.run`
+  baseURL: `https://suketu-68cc9cb2.localhost.run`
 });
